@@ -1,24 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Khf-m1-hat">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--CollectionsVC-->
+        <scene sceneID="b56-bp-Fl2">
+            <objects>
+                <viewController id="5XJ-B3-Akl" customClass="CollectionsVC" customModule="FourSquare" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dI2-B9-g22">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="CoG-no-dUq"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="MLV-jc-59N"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tLv-rP-ea0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-134.78260869565219" y="255.80357142857142"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Jbx-5D-GsK">
+            <objects>
+                <tabBarController id="Khf-m1-hat" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BnY-TE-oDT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Xuf-5L-mIr"/>
+                        <segue destination="95l-nT-CjT" kind="relationship" relationship="viewControllers" id="zqO-TF-MjH"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3dA-sr-ExF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1961" y="-69"/>
+        </scene>
+        <!--Search-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="SearchVC" customModule="FourSquare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="OW9-8b-kHL">
+                                <rect key="frame" x="0.0" y="145" width="414" height="717"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                            <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Enter venue here..." translatesAutoresizingMaskIntoConstraints="NO" id="4wt-FE-E4y">
+                                <rect key="frame" x="0.0" y="44" width="350" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Enter location here..." translatesAutoresizingMaskIntoConstraints="NO" id="CcE-vw-KPN">
+                                <rect key="frame" x="0.0" y="101" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uiC-K6-vJH">
+                                <rect key="frame" x="350" y="53" width="44" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" image="line.horizontal.3" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="optionButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ecD-4V-Pv9"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="jLd-hr-H7m"/>
+                    <connections>
+                        <outlet property="locationSearchBar" destination="CcE-vw-KPN" id="5VX-N3-qye"/>
+                        <outlet property="mapView" destination="OW9-8b-kHL" id="fff-s0-7kP"/>
+                        <outlet property="optionButton" destination="uiC-K6-vJH" id="Ng5-ka-bHk"/>
+                        <outlet property="venueSearchBar" destination="4wt-FE-E4y" id="lgW-GZ-ig5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-1013.0434782608696" y="-567.1875"/>
+        </scene>
+        <!--Collections-->
+        <scene sceneID="B64-nU-Haf">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="95l-nT-CjT" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Collections" image="folder.badge.plus" catalog="system" id="gMF-F8-tlw"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ctv-Mf-Fng">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5XJ-B3-Akl" kind="relationship" relationship="rootViewController" id="PV3-bp-diW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jtx-Lh-0bK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1044.9275362318842" y="255.80357142857142"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="folder.badge.plus" catalog="system" width="64" height="42"/>
+        <image name="line.horizontal.3" catalog="system" width="64" height="32"/>
+        <image name="magnifyingglass" catalog="system" width="64" height="56"/>
+    </resources>
 </document>
