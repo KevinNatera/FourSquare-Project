@@ -17,7 +17,7 @@ class SearchVC: UIViewController {
     @IBOutlet weak var locationSearchBar: UISearchBar!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var optionButton: UIButton!
-    
+    @IBOutlet weak var venueCollectionOutlet: UICollectionView!
     private let locationManager = CLLocationManager()
     
     var userLatitude = 40.742054
@@ -34,9 +34,14 @@ class SearchVC: UIViewController {
         }
     }
     
-  
+    
     @IBAction func optionButtonPressed(_ sender: UIButton) {
-        
+        let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+        let navVC = storyBoard.instantiateViewController(identifier: "navVC") as! UINavigationController
+        let listVC = navVC.topViewController as! ListVC
+        self.present(navVC, animated: true, completion: nil)
+        navVC.title = "Results"
+        listVC.venueList = venues
     }
     
     
@@ -56,7 +61,9 @@ class SearchVC: UIViewController {
                 switch result {
                 case .success(let venuesFromOnline):
                     self.venues = venuesFromOnline
-                    dump(venuesFromOnline)
+                    self.optionButton.isEnabled = true
+                    self.venueCollectionOutlet.alpha = 1.0
+                    self.venueCollectionOutlet.reloadData()
                 case .failure(let error):
                     print(error)
                 }
@@ -70,6 +77,10 @@ class SearchVC: UIViewController {
         locationSearchBar.delegate = self
         venueSearchBar.delegate = self
         mapView.userTrackingMode = .follow
+        optionButton.isEnabled = false
+        venueCollectionOutlet.delegate = self
+        venueCollectionOutlet.dataSource = self
+        venueCollectionOutlet.alpha = 0
     }
     
     private func requestLocationAndAuthorizeIfNeeded() {
@@ -178,7 +189,6 @@ extension SearchVC: UISearchBarDelegate {
                     
                     let coordinateRegion = MKCoordinateRegion(center: newAnnotation.coordinate, latitudinalMeters: self.searchRadius * 2.0, longitudinalMeters: self.searchRadius * 2.0)
                     self.mapView.setRegion(coordinateRegion, animated: true)
-                    
                 }
             }
         default:
@@ -187,3 +197,24 @@ extension SearchVC: UISearchBarDelegate {
     }
 }
 
+//MARK: - CollectionView Extensions
+
+extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return venues.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = venueCollectionOutlet.dequeueReusableCell(withReuseIdentifier: "venues", for: indexPath) as! VenueCollectionViewCell
+        let venue = venues[indexPath.row]
+        cell.configureCell(venue: venue)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 135, height: 110)
+    }
+    
+    
+}
