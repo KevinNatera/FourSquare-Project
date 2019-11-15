@@ -7,3 +7,23 @@
 //
 
 import Foundation
+
+struct ImageResponse: Codable {
+    let response: ImageWrapper
+}
+
+struct ImageWrapper: Codable {
+    let photos: Items
+}
+
+struct Items: Codable {
+    let items: [Photo]
+}
+
+struct Photo: Codable {
+    let prefix: String
+    let suffix: String
+    var imageInfo: String {
+        return "\(prefix)original\(suffix)"
+    }
+}
