@@ -18,6 +18,7 @@ struct VenueWrapper: Codable {
 }
 
 class Venue: NSObject, Codable, MKAnnotation {
+    let id: String
     let name: String
     let location: LocationWrapper
     
