@@ -9,16 +9,37 @@
 import UIKit
 
 class VenueTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    
+    
+    @IBOutlet weak var venueImageOutlet: UIImageView!
+    @IBOutlet weak var venueNameLabel: UILabel!
+    @IBOutlet weak var venueAddressLabel: UILabel!
+    
+    
+    func configureCell(venue: Venue) {
+        venueNameLabel.text = venue.name
+        venueAddressLabel.text = venue.location.address
+        
+        ImageAPIClient.manager.getImages(id: venue.id) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .failure(let error):
+                    print(error)
+                    self.venueImageOutlet.image = UIImage(named: "noImage")
+                case .success(let imageData):
+                    ImageHelper.shared.getImage(urlStr: imageData.first?.imageInfo ?? "") { (result) in
+                        DispatchQueue.main.async {
+                            switch result {
+                            case .failure(let error):
+                                print(error)
+                                self.venueImageOutlet.image = UIImage(named: "noImage")
+                            case .success(let image):
+                                self.venueImageOutlet.image = image
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }
