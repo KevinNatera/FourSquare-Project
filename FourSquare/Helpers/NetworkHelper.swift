@@ -49,7 +49,11 @@ class NetworkHelper {
                     return
                 }
                 
-                guard let response = response as? HTTPURLResponse, (200...299) ~= response.statusCode else {
+                if let response = response as? HTTPURLResponse, response.statusCode == 429 {
+                    print("Annoyingly low API Call Limit Reached")
+                }
+                
+                guard let response = response as? HTTPURLResponse, (200...299) ~= response.statusCode else  {
                     completionHandler(.failure(.badStatusCode))
                     return
                 }
@@ -66,7 +70,7 @@ class NetworkHelper {
                 }
                 completionHandler(.success(data))
             }
-            }.resume()
+        }.resume()
     }
     
     // MARK: - Private Properties and Initializers
