@@ -19,7 +19,6 @@ class ListVC: UIViewController {
         setUp()
     }
     
-    
     private func setUp() {
         resultsTableOutlet.delegate = self
         resultsTableOutlet.dataSource = self

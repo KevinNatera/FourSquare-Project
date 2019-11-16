@@ -20,7 +20,7 @@ class VenueTableViewCell: UITableViewCell {
         venueNameLabel.text = venue.name
         venueAddressLabel.text = venue.location.address
         
-        ImageAPIClient.manager.getImages(id: venue.id) { (result) in
+        VenueAPIClient.shared.getImages(id: venue.id) { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .failure(let error):

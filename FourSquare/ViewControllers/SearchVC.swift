@@ -23,16 +23,9 @@ class SearchVC: UIViewController {
     var userLatitude = 40.742054
     var userLongitude = -73.769417
     let searchRadius: CLLocationDistance = 2000
-    
-    var annotations = [MKPointAnnotation]()
     var searchString: String? = nil
     
-    var venues = [Venue]() {
-        didSet {
-            createAnnotations()
-            mapView.addAnnotations(annotations)
-        }
-    }
+    var venues = [Venue]()
     
     
     @IBAction func optionButtonPressed(_ sender: UIButton) {
@@ -43,7 +36,6 @@ class SearchVC: UIViewController {
         navVC.title = "Results"
         listVC.venueList = venues
     }
-    
     
     
     override func viewDidLoad() {
@@ -61,6 +53,12 @@ class SearchVC: UIViewController {
                 switch result {
                 case .success(let venuesFromOnline):
                     self.venues = venuesFromOnline
+                    for i in self.venues {
+                        let newAnnotation = MKPointAnnotation()
+                        newAnnotation.title = i.name
+                        newAnnotation.coordinate = i.coordinate
+                        self.mapView.addAnnotation(newAnnotation)
+                    }
                     self.optionButton.isEnabled = true
                     self.venueCollectionOutlet.alpha = 1.0
                     self.venueCollectionOutlet.reloadData()
@@ -94,17 +92,6 @@ class SearchVC: UIViewController {
             locationManager.requestWhenInUseAuthorization()
         }
     }
-    
-    private func createAnnotations() {
-        annotations = [MKPointAnnotation]()
-        
-        for (i,v) in venues.enumerated() {
-            annotations.append(MKPointAnnotation())
-            annotations[i].title = v.name
-            annotations[i].coordinate = v.coordinate
-        }
-    }
-    
     
 }
 

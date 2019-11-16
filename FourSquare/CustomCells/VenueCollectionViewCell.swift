@@ -14,7 +14,7 @@ class VenueCollectionViewCell: UICollectionViewCell {
     
     
     func configureCell(venue: Venue) {
-        ImageAPIClient.manager.getImages(id: venue.id) { (result) in
+        VenueAPIClient.shared.getImages(id: venue.id) { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .failure(let error):
