@@ -25,6 +25,12 @@
 		0BF241A5237E4E490028FB42 /* VenueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF241A4237E4E490028FB42 /* VenueTableViewCell.swift */; };
 		0BF241A8237E50BF0028FB42 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF241A7237E50BF0028FB42 /* ImageHelper.swift */; };
 		0BF241AA237E5BC20028FB42 /* VenueCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF241A9237E5BC20028FB42 /* VenueCollectionViewCell.swift */; };
+		0BF241AE237FB2880028FB42 /* PersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF241AD237FB2880028FB42 /* PersistenceHelper.swift */; };
+		0BF241B0237FB3490028FB42 /* CollectionsPersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF241AF237FB3490028FB42 /* CollectionsPersistenceHelper.swift */; };
+		0BF241B4238095BE0028FB42 /* CollectionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF241B3238095BE0028FB42 /* CollectionsModel.swift */; };
+		0BF241B623809E600028FB42 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF241B523809E600028FB42 /* CollectionViewCell.swift */; };
+		0BF241B82380FA280028FB42 /* UIButtonSubClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF241B72380FA280028FB42 /* UIButtonSubClass.swift */; };
+		0BF241BA2380FF7C0028FB42 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF241B92380FF7C0028FB42 /* Protocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +75,12 @@
 		0BF241A4237E4E490028FB42 /* VenueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueTableViewCell.swift; sourceTree = "<group>"; };
 		0BF241A7237E50BF0028FB42 /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
 		0BF241A9237E5BC20028FB42 /* VenueCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueCollectionViewCell.swift; sourceTree = "<group>"; };
+		0BF241AD237FB2880028FB42 /* PersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelper.swift; sourceTree = "<group>"; };
+		0BF241AF237FB3490028FB42 /* CollectionsPersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsPersistenceHelper.swift; sourceTree = "<group>"; };
+		0BF241B3238095BE0028FB42 /* CollectionsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsModel.swift; sourceTree = "<group>"; };
+		0BF241B523809E600028FB42 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CollectionViewCell.swift; path = FourSquare/CustomCells/CollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
+		0BF241B72380FA280028FB42 /* UIButtonSubClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonSubClass.swift; sourceTree = "<group>"; };
+		0BF241B92380FF7C0028FB42 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +179,9 @@
 				0BF2419A237CF15D0028FB42 /* VenueAPIClient.swift */,
 				0BF241A7237E50BF0028FB42 /* ImageHelper.swift */,
 				0BF24195237CEDD20028FB42 /* NetworkHelper.swift */,
+				0BF241AD237FB2880028FB42 /* PersistenceHelper.swift */,
+				0BF241AF237FB3490028FB42 /* CollectionsPersistenceHelper.swift */,
+				0BF241B72380FA280028FB42 /* UIButtonSubClass.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -176,6 +191,8 @@
 			children = (
 				0BF24197237CF0090028FB42 /* VenueModel.swift */,
 				0BF241A2237E4AF30028FB42 /* ImageModel.swift */,
+				0BF241B3238095BE0028FB42 /* CollectionsModel.swift */,
+				0BF241B92380FF7C0028FB42 /* Protocols.swift */,
 				0BF2419C237CF2EC0028FB42 /* Secrets.swift */,
 			);
 			path = Models;
@@ -186,6 +203,7 @@
 			children = (
 				0BF241A4237E4E490028FB42 /* VenueTableViewCell.swift */,
 				0BF241A9237E5BC20028FB42 /* VenueCollectionViewCell.swift */,
+				0BF241B523809E600028FB42 /* CollectionViewCell.swift */,
 			);
 			path = CustomCells;
 			sourceTree = "<group>";
@@ -322,10 +340,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BF241A3237E4AF30028FB42 /* ImageModel.swift in Sources */,
+				0BF241B4238095BE0028FB42 /* CollectionsModel.swift in Sources */,
+				0BF241B623809E600028FB42 /* CollectionViewCell.swift in Sources */,
+				0BF241B82380FA280028FB42 /* UIButtonSubClass.swift in Sources */,
 				0BF24196237CEDD20028FB42 /* NetworkHelper.swift in Sources */,
 				0BF2419D237CF2EC0028FB42 /* Secrets.swift in Sources */,
+				0BF241AE237FB2880028FB42 /* PersistenceHelper.swift in Sources */,
 				0BF24163237B4FEA0028FB42 /* SearchVC.swift in Sources */,
 				0BF2419F237DBA6C0028FB42 /* ListVC.swift in Sources */,
+				0BF241BA2380FF7C0028FB42 /* Protocols.swift in Sources */,
 				0BF2415F237B4FEA0028FB42 /* AppDelegate.swift in Sources */,
 				0BF2419B237CF15D0028FB42 /* VenueAPIClient.swift in Sources */,
 				0BF241A8237E50BF0028FB42 /* ImageHelper.swift in Sources */,
@@ -333,6 +356,7 @@
 				0BF241AA237E5BC20028FB42 /* VenueCollectionViewCell.swift in Sources */,
 				0BF241A5237E4E490028FB42 /* VenueTableViewCell.swift in Sources */,
 				0BF24198237CF0090028FB42 /* VenueModel.swift in Sources */,
+				0BF241B0237FB3490028FB42 /* CollectionsPersistenceHelper.swift in Sources */,
 				0BF24161237B4FEA0028FB42 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

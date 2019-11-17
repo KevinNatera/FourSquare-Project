@@ -14,8 +14,10 @@ class ListVC: UIViewController {
     
     var venueList: [Venue]!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
         setUp()
     }
     
@@ -28,6 +30,7 @@ class ListVC: UIViewController {
 }
 
 extension ListVC: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return venueList.count
     }
@@ -36,9 +39,25 @@ extension ListVC: UITableViewDelegate, UITableViewDataSource {
         let cell = resultsTableOutlet.dequeueReusableCell(withIdentifier: "venues") as! VenueTableViewCell
         let venue = venueList[indexPath.row]
         cell.configureCell(venue: venue)
+        cell.favoriteButton.tag = indexPath.row
+        cell.favoriteButton.venue = venue
+        cell.delegate = self
         return cell
     }
     
     
 }
 
+extension ListVC: AddButtonDelegate {
+    
+    func segue(sender: AddButton) {
+        let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+        let navVC = storyBoard.instantiateViewController(identifier: "navVC1") as! UINavigationController
+        let collectionVC = navVC.topViewController as! CollectionsVC
+        present(navVC, animated: true)
+        navVC.title = "Choose a collection"
+        collectionVC.venue = sender.venue
+    }
+    
+    
+}

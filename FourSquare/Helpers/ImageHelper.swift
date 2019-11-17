@@ -5,7 +5,6 @@
 //  Created by Kevin Natera on 11/14/19.
 //  Copyright © 2019 Kevin Natera. All rights reserved.
 //
-
 import Foundation
 import UIKit
 
@@ -31,7 +30,6 @@ class ImageHelper {
                 completionHandler(.failure(.noDataReceived))
                 return
             }
-            
             guard let image = UIImage(data: data) else {
                 completionHandler(.failure(.notAnImage))
                 return
@@ -40,5 +38,5 @@ class ImageHelper {
             
             }.resume()
     }
-    
 }
+

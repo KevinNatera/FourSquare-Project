@@ -1,35 +1,21 @@
 //
-//  VenueTableViewCell.swift
+//  CollectionViewCell.swift
 //  FourSquare
 //
-//  Created by Kevin Natera on 11/14/19.
+//  Created by Kevin Natera on 11/16/19.
 //  Copyright © 2019 Kevin Natera. All rights reserved.
 //
-import Foundation
+
 import UIKit
 
-class VenueTableViewCell: UITableViewCell {
+class CollectionViewCell: UICollectionViewCell {
     
-    
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var venueImageOutlet: UIImageView!
-    @IBOutlet weak var venueNameLabel: UILabel!
-    @IBOutlet weak var venueAddressLabel: UILabel!
-    @IBOutlet weak var favoriteButton: AddButton!
     
-    weak var delegate: AddButtonDelegate?
-    
-    @IBAction func FavoriteButtonPressed(_ sender: AddButton) {
-        delegate?.segue(sender: sender)
-    }
-    
-    
-    
-    
-    func configureCell(venue: Venue) {
-        venueNameLabel.text = venue.name
-        venueAddressLabel.text = venue.location.address
-        
-        VenueAPIClient.shared.getImages(id: venue.id) { (result) in
+    func configureCell(collection: Collections) {
+        titleLabel.text = collection.title
+        VenueAPIClient.shared.getImages(id: collection.venues.first?.id ?? "") { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .failure(let error):
@@ -47,8 +33,12 @@ class VenueTableViewCell: UITableViewCell {
                             }
                         }
                     }
+                    
                 }
             }
         }
+        
     }
+    
+    
 }

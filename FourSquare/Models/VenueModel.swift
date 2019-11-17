@@ -13,6 +13,7 @@ import CoreLocation
 struct VenueResponse: Codable {
     let response: VenueWrapper
 }
+
 struct VenueWrapper: Codable {
     let venues: [Venue]
 }
@@ -46,3 +47,5 @@ struct LocationWrapper: Codable {
     let lat: Double
     let lng: Double
 }
+
+
