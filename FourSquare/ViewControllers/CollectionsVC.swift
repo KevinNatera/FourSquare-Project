@@ -79,6 +79,15 @@ extension CollectionsVC: UICollectionViewDelegate, UICollectionViewDataSource, U
             alert.addAction(cancelAction)
             present(alert, animated: true)
             print(newCollection[indexPath.row].venues)
+            self.venue = nil
+        } else {
+            let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+            let navVC = storyBoard.instantiateViewController(identifier: "navVC") as! UINavigationController
+            let listVC = navVC.topViewController as! ListVC
+            self.present(navVC, animated: true, completion: nil)
+            let venueCollection = try? CollectionsPersistenceHelper.manager.getCollections()[indexPath.row]
+            navVC.title = "\(venueCollection?.title ?? "Collection")"
+            listVC.venueList = venueCollection?.venues
         }
         
     }
